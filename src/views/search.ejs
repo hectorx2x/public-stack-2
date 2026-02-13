@@ -1,0 +1,18 @@
+<%- include('partials/header', { title }) %>
+
+<section class="card">
+  <h2>Búsqueda</h2>
+  <form action="/search" method="get">
+    <input name="q" placeholder="Busca..." value="<%= q %>" />
+    <button type="submit">Buscar</button>
+  </form>
+
+  <hr />
+
+  <h3>Resultado</h3>
+  <p>Tu query fue:</p>
+  <!-- ⚠️ Reflected XSS -->
+  <div class="result"><%- q %></div>
+</section>
+
+<%- include('partials/footer') %>

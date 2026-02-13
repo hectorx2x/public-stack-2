@@ -1,0 +1,10 @@
+<%- include('partials/header', { title }) %>
+
+<section class="card">
+  <h2>Perfil</h2>
+  <p>Cookie session (insegura):</p>
+  <pre><%= session || '(no logueado)' %></pre>
+  <p class="muted">⚠️ Cookie sin flags HttpOnly/Secure.</p>
+</section>
+
+<%- include('partials/footer') %>

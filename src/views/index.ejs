@@ -1,0 +1,26 @@
+<%- include('partials/header', { title }) %>
+
+<p>Bienvenido. Esta aplicación contiene vulnerabilidades intencionales para escanear con OWASP ZAP.</p>
+
+<section class="card">
+  <h2>Rutas útiles</h2>
+  <ul>
+    <li><a href="/search?q=hola">/search</a> (XSS reflejado)</li>
+    <li><a href="/comments">/comments</a> (XSS almacenado)</li>
+    <li><a href="/redirect?url=https://example.com">/redirect</a> (Open redirect)</li>
+    <li><a href="/file?name=README.md">/file</a> (Path traversal/LFI)</li>
+    <li><a href="/tools/ping?host=127.0.0.1">/tools/ping</a> (Command injection)</li>
+    <li><a href="/api/users?name=alice">/api/users</a> (SQLi)</li>
+  </ul>
+</section>
+
+<section class="card">
+  <h2>Cookie demo (insegura)</h2>
+  <p>Cookie "user": <strong><%= user || '(no establecida)' %></strong></p>
+  <form action="/set-user" method="get">
+    <input name="user" placeholder="escribe tu nombre" />
+    <button type="submit">Set cookie</button>
+  </form>
+</section>
+
+<%- include('partials/footer') %>

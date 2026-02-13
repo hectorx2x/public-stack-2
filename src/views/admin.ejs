@@ -1,0 +1,10 @@
+<%- include('partials/header', { title }) %>
+
+<section class="card">
+  <h2>Panel Admin (sin protección)</h2>
+  <p class="muted">⚠️ Broken Access Control: cualquiera puede entrar aquí.</p>
+  <p>Secreto:</p>
+  <pre><%= secret %></pre>
+</section>
+
+<%- include('partials/footer') %>

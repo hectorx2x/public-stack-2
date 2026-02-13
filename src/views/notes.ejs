@@ -1,0 +1,31 @@
+<%- include('partials/header', { title }) %>
+
+<section class="card">
+  <h2>Notas</h2>
+  <p class="muted">⚠️ No hay autenticación. Y la API permite ver notas por ID sin validar dueño (IDOR).</p>
+
+  <h3>Lista</h3>
+  <table class="tbl">
+    <thead>
+      <tr><th>ID</th><th>Owner</th><th>Title</th><th>Acciones</th></tr>
+    </thead>
+    <tbody>
+      <% notes.forEach(n => { %>
+        <tr>
+          <td><%= n.id %></td>
+          <td><%= n.owner %></td>
+          <td><%= n.title %></td>
+          <td>
+            <a href="/api/notes/<%= n.id %>" target="_blank">Ver via API</a>
+            <form action="/notes/delete" method="post" style="display:inline">
+              <input type="hidden" name="id" value="<%= n.id %>" />
+              <button type="submit">Borrar</button>
+            </form>
+          </td>
+        </tr>
+      <% }) %>
+    </tbody>
+  </table>
+</section>
+
+<%- include('partials/footer') %>

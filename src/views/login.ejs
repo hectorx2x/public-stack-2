@@ -1,0 +1,27 @@
+<%- include('partials/header', { title }) %>
+
+<section class="card">
+  <h2>Login (intencionalmente vulnerable)</h2>
+  <p>Usuarios de prueba:</p>
+  <ul>
+    <li>alice / password123</li>
+    <li>bob / secret</li>
+    <li>admin / admin</li>
+  </ul>
+
+  <% if (error) { %>
+    <div class="alert"><%= error %></div>
+  <% } %>
+
+  <form action="/do-login" method="post">
+    <label>Usuario</label>
+    <input name="username" autocomplete="off" />
+    <label>Password</label>
+    <input name="password" type="password" autocomplete="off" />
+    <button type="submit">Entrar</button>
+  </form>
+
+  <p class="muted">⚠️ El query SQL se arma concatenando strings (SQL Injection).</p>
+</section>
+
+<%- include('partials/footer') %>

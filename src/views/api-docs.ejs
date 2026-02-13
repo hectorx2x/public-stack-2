@@ -1,0 +1,24 @@
+<%- include('partials/header', { title }) %>
+
+<section class="card">
+  <h2>API</h2>
+  <p>Base: <code>/api</code></p>
+
+  <h3>Endpoints</h3>
+  <ul>
+    <li><code>GET /api/health</code></li>
+    <li><code>GET /api/users?name=alice</code> (⚠️ SQLi)</li>
+    <li><code>POST /api/notes</code> (body JSON: owner,title,content)</li>
+    <li><code>GET /api/notes/:id</code> (⚠️ IDOR)</li>
+    <li><code>GET /api/echo?q=...</code></li>
+  </ul>
+
+  <h3>Ejemplo POST /api/notes</h3>
+  <pre>{
+  "owner": "alice",
+  "title": "hola",
+  "content": "contenido"
+}</pre>
+</section>
+
+<%- include('partials/footer') %>

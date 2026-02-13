@@ -1,0 +1,26 @@
+<%- include('partials/header', { title }) %>
+
+<section class="card">
+  <h2>Comentarios</h2>
+
+  <form action="/comments" method="post">
+    <label>Nuevo comentario</label>
+    <textarea name="text" rows="3" placeholder="Escribe algo..."></textarea>
+    <button type="submit">Guardar</button>
+  </form>
+
+  <hr />
+
+  <h3>Lista</h3>
+  <ul class="list">
+    <% comments.forEach(c => { %>
+      <li>
+        <div class="meta">#<%= c.id %> — <%= c.created_at %></div>
+        <!-- ⚠️ Stored XSS: render sin escape -->
+        <div class="content"><%- c.text %></div>
+      </li>
+    <% }) %>
+  </ul>
+</section>
+
+<%- include('partials/footer') %>
